@@ -17,6 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: cupboard
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -80,6 +81,5 @@ test:
 #
 production:
   <<: *default
-  database: cupboard_production
-  username: cupboard
+  database: cupboard
   password: <%= ENV['CUPBOARD_DATABASE_PASSWORD'] %>
