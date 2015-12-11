@@ -11,16 +11,77 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102210758) do
+ActiveRecord::Schema.define(version: 20151211202425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "families", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "list_products", force: :cascade do |t|
+    t.integer  "list_id",    null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "list_products", ["list_id"], name: "index_list_products_on_list_id", using: :btree
+  add_index "list_products", ["product_id"], name: "index_list_products_on_product_id", using: :btree
+
+  create_table "lists", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "family_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "lists", ["family_id"], name: "index_lists_on_family_id", using: :btree
+
+  create_table "market_products", force: :cascade do |t|
+    t.integer  "market_id",  null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "market_products", ["market_id"], name: "index_market_products_on_market_id", using: :btree
+  add_index "market_products", ["product_id"], name: "index_market_products_on_product_id", using: :btree
+
+  create_table "markets", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.integer  "category_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
+
+  create_table "purchases", force: :cascade do |t|
+    t.decimal  "amount",     null: false
+    t.decimal  "price",      null: false
+    t.string   "extension",  null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "purchases", ["product_id"], name: "index_purchases_on_product_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",       null: false
@@ -33,5 +94,12 @@ ActiveRecord::Schema.define(version: 20151102210758) do
 
   add_index "users", ["family_id"], name: "index_users_on_family_id", using: :btree
 
+  add_foreign_key "list_products", "lists"
+  add_foreign_key "list_products", "products"
+  add_foreign_key "lists", "families"
+  add_foreign_key "market_products", "markets"
+  add_foreign_key "market_products", "products"
+  add_foreign_key "products", "categories"
+  add_foreign_key "purchases", "products"
   add_foreign_key "users", "families"
 end
