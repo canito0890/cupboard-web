@@ -1,7 +1,14 @@
+# Schema Information
+#
+# Table Name: families
+# => id         :integer, not null, pk
+# => name       :string, not null
 class Family < ActiveRecord::Base
 
-  has_many :users
+  # concerns
+  include Nameable
 
-  validates :name, length: { in: 2..100 }, presence: true
+  # relations
+  has_many :users
 
 end
