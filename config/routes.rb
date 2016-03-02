@@ -20,6 +20,13 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
+  # Versioned api
+  namespace :api do
+    api_version(module: 'V1', path: { value: 'v1' }, default: true) do
+      resources :family
+    end
+  end
+
   # Example resource route with options:
   #   resources :products do
   #     member do
