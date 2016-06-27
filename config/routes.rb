@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
 
-	#Casein routes
-	namespace :casein do
-		resources :products, :except => [:index]
-		resources :markets
-		resources :categories
-		resources :families
-	end
+  devise_for :users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
