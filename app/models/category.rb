@@ -1,5 +1,2 @@
-class Category < ActiveRecord::Base
-
-  include Nameable
-
+class Category < ApplicationRecord
 end

@@ -1,58 +1,24 @@
-# Cupboard Web App
+# README
 
-## Versions
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-- Ruby 2.2.1
-- Rails 4.2.3
-- PostgreSQL 9.3.1
+Things you may want to cover:
 
-## Configuration
+* Ruby version
 
-Should take care of project gem dependencies:
-```sh
-bundle
-```
+* System dependencies
 
-## Database Configuration
+* Configuration
 
-### PostgreSQL Specific
+* Database creation
 
-Create user and grant privileges:
-```sql
-CREATE USER cupboard;
-ALTER ROLE cupboard CREATEDB;
-```
+* Database initialization
 
-## Database Init
+* How to run the test suite
 
-Create DB:
-```rake
-rake db:create
-```
+* Services (job queues, cache servers, search engines, etc.)
 
-Apply Migrations:
-```rake
-rake db:migrate
-```
+* Deployment instructions
 
-## Testing Suite
-
-### RSpec
-
-TODO
-
-## Services (job queues, cache servers, search engines, etc.)
-
-None yet.
-
-## Deployment Instructions
-
-### Database Init (Should be run only once for fresh install):
-
-#### PostgreSQL
-
-```sql
-ALTER ROLE cupboard WITH PASSWORD '<prod_env_password>';
-```
-
-TODO
+* ...
