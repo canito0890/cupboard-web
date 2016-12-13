@@ -1,7 +1,7 @@
-class Market < ApplicationRecord
+class FamilyUser < ApplicationRecord
 
   # associations
-  has_many :market_products
+  belongs_to :family
 
   # validations
   validates :name, length: { in: 2..100 }, presence: true
