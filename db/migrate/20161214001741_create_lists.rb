@@ -4,6 +4,7 @@ class CreateLists < ActiveRecord::Migration[5.0]
       t.belongs_to :family, null: true
       t.belongs_to :family_user, null: false
       t.string :name, null: false
+      t.boolean :complete, null: false, default: false
       t.timestamps
     end
 

@@ -5,5 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.string :name, null: false
       t.timestamps
     end
+
+    add_foreign_key :products, :categories, on_delete: :cascade, on_update: :cascade
   end
 end
