@@ -1,8 +1,7 @@
 class CreateMarkets < ActiveRecord::Migration[5.0]
   def change
-    create_table :markets do |t|
+    create_table :markets, id: :bigserial do |t|
       t.string :name, null: false
-
       t.timestamps
     end
   end

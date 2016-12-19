@@ -1,6 +1,6 @@
 class CreateListProducts < ActiveRecord::Migration[5.0]
   def change
-    create_table :list_products do |t|
+    create_table :list_products, id: :bigserial do |t|
       t.belongs_to :list, null: false, index: true
       t.belongs_to :product, null: false, index: true
       t.boolean :bought, null: false, default: false

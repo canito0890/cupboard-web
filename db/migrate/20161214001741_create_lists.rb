@@ -1,6 +1,6 @@
 class CreateLists < ActiveRecord::Migration[5.0]
   def change
-    create_table :lists do |t|
+    create_table :lists, id: :bigserial do |t|
       t.belongs_to :family, null: true
       t.belongs_to :family_user, null: false
       t.string :name, null: false

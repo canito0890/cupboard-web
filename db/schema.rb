@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214231603) do
+ActiveRecord::Schema.define(version: 20161219024435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 20161214231603) do
     t.index ["family_user_id"], name: "index_lists_on_family_user_id", using: :btree
   end
 
+  create_table "market_products", force: :cascade do |t|
+    t.integer  "market_id",  null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["market_id"], name: "index_market_products_on_market_id", using: :btree
+    t.index ["product_id"], name: "index_market_products_on_product_id", using: :btree
+  end
+
   create_table "markets", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
@@ -98,6 +107,8 @@ ActiveRecord::Schema.define(version: 20161214231603) do
   add_foreign_key "list_products", "products", on_update: :cascade, on_delete: :cascade
   add_foreign_key "lists", "families", on_update: :cascade, on_delete: :cascade
   add_foreign_key "lists", "family_users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "market_products", "markets", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "market_products", "products", on_update: :cascade, on_delete: :cascade
   add_foreign_key "products", "categories", on_update: :cascade, on_delete: :cascade
   add_foreign_key "purchases", "products", on_update: :cascade, on_delete: :cascade
 end
