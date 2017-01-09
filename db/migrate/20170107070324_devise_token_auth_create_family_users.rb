@@ -1,6 +1,6 @@
 class DeviseTokenAuthCreateFamilyUsers < ActiveRecord::Migration[5.0]
   def change
-    create_table(:family_users) do |t|
+    change_table(:family_users) do |t|
       ## Required
       t.string :provider, :null => false, :default => "email"
       t.string :uid, :null => false, :default => ""
@@ -34,15 +34,15 @@ class DeviseTokenAuthCreateFamilyUsers < ActiveRecord::Migration[5.0]
       # t.datetime :locked_at
 
       ## User Info
-      t.string :name
-      t.string :nickname
-      t.string :image
+      # t.string :name
+      # t.string :nickname
+      # t.string :image
       t.string :email
 
       ## Tokens
       t.json :tokens
 
-      t.timestamps
+      # t.timestamps
     end
 
     add_index :family_users, :email

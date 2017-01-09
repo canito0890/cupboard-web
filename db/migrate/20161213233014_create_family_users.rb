@@ -4,7 +4,7 @@ class CreateFamilyUsers < ActiveRecord::Migration[5.0]
       t.belongs_to :family, null: false, index: true
       t.string :name, null: false
       t.string :last_names, null: false
-      t.string :mail, null: false
+      # t.string :mail, null: false
       t.string :password, null: false
       t.timestamps
     end
