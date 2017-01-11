@@ -4,6 +4,6 @@ class Category < ApplicationRecord
   has_many :products
 
   # validations
-  validates :name, length: { in: 2..100 }, presence: true
+  validates :name, length: { in: 2..100 }, uniqueness: true, presence: true
 
 end

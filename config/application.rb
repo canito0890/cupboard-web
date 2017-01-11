@@ -28,7 +28,8 @@ module Cupboard
     config.api_only = true
 
     config.generators do |g|
-      g.test_framework  :rspec, :fixture => false
+      g.test_framework  :rspec, fixture: false
+      g.factory_girl false
       g.view_specs false
       g.helper_specs false
     end

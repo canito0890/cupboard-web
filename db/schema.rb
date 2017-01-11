@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20170107070324) do
     t.integer  "family_id",                                null: false
     t.string   "name",                                     null: false
     t.string   "last_names",                               null: false
-    t.string   "password",                                 null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.string   "provider",               default: "email", null: false
@@ -45,10 +44,6 @@ ActiveRecord::Schema.define(version: 20170107070324) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
     t.string   "email"
     t.json     "tokens"
     t.index ["email"], name: "index_family_users_on_email", using: :btree
@@ -112,12 +107,7 @@ ActiveRecord::Schema.define(version: 20170107070324) do
     t.index ["product_id"], name: "index_purchases_on_product_id", using: :btree
   end
 
-  create_table "users", id: :bigserial, force: :cascade do |t|
-    t.string   "name",                                     null: false
-    t.string   "last_names",                               null: false
-    t.string   "password",                                 null: false
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+  create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
     t.string   "uid",                    default: "",      null: false
     t.string   "encrypted_password",     default: "",      null: false
@@ -129,10 +119,8 @@ ActiveRecord::Schema.define(version: 20170107070324) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
+    t.string   "name"
+    t.string   "last_names"
     t.string   "email"
     t.json     "tokens"
     t.index ["email"], name: "index_users_on_email", using: :btree
