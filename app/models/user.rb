@@ -9,6 +9,6 @@ class User < ApplicationRecord
   # validations
   validates :name, length: { in: 2..100 }, presence: true
   validates :last_names, length: { in: 2..100 }, presence: true
-  validates :mail, length: { in: 2..100 }, presence: true
+  validates :email, length: { in: 2..100 }, presence: true
 
 end

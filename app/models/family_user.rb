@@ -12,6 +12,7 @@ class FamilyUser < ApplicationRecord
   # validations
   validates :name, length: { in: 2..100 }, presence: true
   validates :last_names, length: { in: 2..100 }, presence: true
-  validates :email, length: { in: 2..100 }, uniqueness: true, presence: true
+  validates :email, length: { in: 2..100 }, presence: true
+  validates :email, uniqueness: true
 
 end
