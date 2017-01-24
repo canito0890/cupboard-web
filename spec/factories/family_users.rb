@@ -15,8 +15,7 @@ FactoryGirl.define do
     last_names { generate(:family_user_name) }
     email { generate(:family_user_email) }
     password '49b708ad-a25c-4776-91b0-4a3ed1eca731'
-    password_confirmation '49b708ad-a25c-4776-91b0-4a3ed1eca731'
-    
+    # password_confirmation '49b708ad-a25c-4776-91b0-4a3ed1eca731'
   end
 
 end

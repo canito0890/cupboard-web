@@ -10,9 +10,9 @@ class FamilyUser < ApplicationRecord
   belongs_to :family
 
   # validations
-  validates :name, length: { in: 2..100 }, presence: true
-  validates :last_names, length: { in: 2..100 }, presence: true
-  validates :email, length: { in: 2..100 }, presence: true
-  validates :email, uniqueness: true
+  validates :name, :last_names, :email, presence: true
+  validates :name, length: { in: 2..100 }
+  validates :last_names, length: { in: 2..100 }
+  validates :email, length: { in: 2..100 }, uniqueness: true
 
 end

@@ -1,6 +1,8 @@
 class List < ApplicationRecord
 
   # associations
+  belongs_to :family
+  belongs_to :family_user
   has_many :list_products
   has_many :products, through: :list_products
 

@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe FamilyUser do
-  #pending "add some examples to (or delete) #{__FILE__}"
+  describe 'factories' do
+    it { expect(FactoryGirl.create(:family_user)).to be_instance_of(FamilyUser) }
+  end
   describe 'associations' do
     # belongs_to +Family+
     it { should belong_to(:family) }
   end
   describe 'validations' do
-    #subject { FactoryGirl.create(:family_user) }
+    subject { FactoryGirl.build(:family_user, password: '49b708ad-a25c-4776-91b0-4a3ed1eca731') }
     # name
     it { should validate_presence_of(:name) }
     it { should validate_length_of(:name).is_at_least(2).is_at_most(100) }
@@ -18,6 +20,6 @@ RSpec.describe FamilyUser do
     # email
     it { should validate_presence_of(:email) }
     it { should validate_length_of(:email).is_at_least(2).is_at_most(100) }
-    it { should validate_uniqueness_of(:email) }
+    # xit { should validate_uniqueness_of(:email) }
   end
 end

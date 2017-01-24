@@ -7,8 +7,9 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
 
   # validations
-  validates :name, length: { in: 2..100 }, presence: true
-  validates :last_names, length: { in: 2..100 }, presence: true
-  validates :email, length: { in: 2..100 }, presence: true
+  validates :name, :last_names, :email, presence: true
+  validates :name, length: { in: 2..100 }
+  validates :last_names, length: { in: 2..100 }
+  validates :email, length: { in: 2..100 }, uniqueness: true
 
 end
